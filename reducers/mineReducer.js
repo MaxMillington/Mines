@@ -2,8 +2,20 @@ import {
   CLICK
 } from '../actions/index'
 
+let tiles = []
+
+let i
+
+for (i = 1; i <= 5; i++) {
+  let j
+  for (j = 1; j <= 5; j++) {
+    const bomb = Math.random() < 0.5
+    tiles.push({ coordinates: [i, j], bomb: bomb, clicked: false })
+  }
+}
+
 const initialState = {
-  tiles: [],
+  tiles: tiles,
   loading: false,
   error: false
 }
