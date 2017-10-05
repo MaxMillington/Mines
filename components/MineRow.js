@@ -5,11 +5,13 @@ import { StyleSheet, View, Text, Image, TouchableHighlight } from 'react-native'
 const MineRow = (props) => {
   const renderTiles = () => {
     return props.row.map((tile, index) => {
-      const bomb = tile.bomb ? 'bomb' : 'nope'
+      const bomb = tile.bomb ? 'b' : 'n'
       return (
-        <Text key={index} style={styles.tile} >
-          {bomb}
-        </Text>
+        <View key={index} style={styles.tileContainer} >
+          <Text style={styles.tile} >
+            b
+          </Text>
+        </View>
       )
     })
   }
@@ -30,14 +32,27 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'blue',
+    flexWrap: 'nowrap'
   },
-  tile: {
+  tileContainer: {
     flex: 1,
+    // flexGrow: 1,
+    // flexBasis: 0.14,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 0.5,
+    borderColor: 'red',
+    height: '100%'
+  },
+  tile: {
+    // flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
     textAlign: 'center',
-    flexGrow: 1
+    // flexGrow: 1,
   }
 })
 

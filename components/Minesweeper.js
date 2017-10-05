@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'react-proptypes'
-import { StyleSheet, View, Text, Image, TouchableHighlight } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableHighlight, Button } from 'react-native'
 import { chunk } from 'lodash'
 import MineRow from './MineRow'
 
@@ -14,8 +14,15 @@ const Minesweeper = (props) => {
   }
 
   return (
-    <View style={styles.container} >
-      {renderRows()}
+    <View style={styles.outerContainer}>
+      <Button style={styles.restartButton} title="Restart" />
+      <View style={styles.rowContainer} >
+        {renderRows()}
+      </View>
+      <View style={styles.buttonContainer} >
+        <Button title="mark bomb"/>
+        <Button title="mark space"/>
+      </View>
     </View>
   )
 }
@@ -25,15 +32,35 @@ Minesweeper.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  outerContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    maxWidth: 300,
+    maxHeight: 400,
+    borderWidth: 0.5,
+    borderColor: 'green',
+  },
+  restartButton: {
+    flex: 1,
+    paddingBottom: 50,
+  },
+  rowContainer: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    maxWidth: 250,
-    maxHeight: 250,
+    // maxWidth: 300,
+    // maxHeight: 250,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    marginTop: 30,
   },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row'
+  }
 });
 
 
