@@ -28,9 +28,18 @@ class Minesweeper extends React.Component {
   }
 
   render() {
+
+    console.log('top level props', this.props)
+    let source = require('../img/freeSmileF.png')
+    if (this.props.status === 'game over') {
+      source = require('../img/freeSadFaCe.png')
+    } else if (this.props.status === 'won') {
+      source = require('../img/freeSunFace.png')
+    }
+
     return (
       <View style={styles.outerContainer}>
-        <Image style={styles.restartButton} source={require('../img/freeSmileF.png')}  onPress={this.restartGame} />
+        <Image style={styles.restartButton} source={source}  onPress={this.restartGame} />
         <View style={styles.rowContainer} >
           {this.renderRows()}
         </View>
@@ -57,7 +66,7 @@ const styles = StyleSheet.create({
     maxWidth: 300,
     maxHeight: 400,
     borderWidth: 0.5,
-    borderColor: 'green',
+    borderColor: 'gray',
     paddingTop: 10
   },
   restartButton: {
@@ -71,13 +80,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    borderWidth: 0.5,
     marginBottom: 30,
     marginTop: 20,
     paddingHorizontal: 5,
-    borderTopWidth: 0.5,
-    borderBottomWidth: 0.5,
-    borderColor: 'gray',
   },
   buttonContainer: {
     flex: 1,

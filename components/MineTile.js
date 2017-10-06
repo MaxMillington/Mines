@@ -3,11 +3,18 @@ import PropTypes from 'react-proptypes'
 import { StyleSheet, View, Text, Image, TouchableHighlight } from 'react-native'
 
 const MineTile = (props) => {
-  const bomb = props.tile.bomb ? 'b' : 'n'
+  let bomb
+  if (props.tile.clicked && !props.tile.bomb) {
+    bomb = 'n'
+  } else if (props.tile.clicked && props.tile.bomb) {
+    bomb = 'b'
+  }
 
   const handlePress = () => {
     props.click(props.markType, props.tile)
   }
+
+  console.log('yo my props', props)
 
   return (
     <TouchableHighlight
