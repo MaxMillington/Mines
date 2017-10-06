@@ -7,11 +7,11 @@ const MineRow = (props) => {
     return props.row.map((tile, index) => {
       const bomb = tile.bomb ? 'b' : 'n'
       return (
-        <View key={index} style={styles.tileContainer} >
+        <TouchableHighlight key={index} style={styles.tileContainer} >
           <Text style={styles.tile} >
             {bomb}
           </Text>
-        </View>
+        </TouchableHighlight>
       )
     })
   }
@@ -24,7 +24,8 @@ const MineRow = (props) => {
 }
 
 MineRow.propTypes = {
-  row: PropTypes.array.isRequired
+  row: PropTypes.array.isRequired,
+  markType: PropTypes.string.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -44,11 +45,7 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   tile: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     textAlign: 'center',
-    // height: '100%'
   }
 })
 
