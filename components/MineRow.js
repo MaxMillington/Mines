@@ -1,17 +1,13 @@
 import React from 'react'
 import PropTypes from 'react-proptypes'
-import { StyleSheet, View, Text, Image, TouchableHighlight } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import MineTile from './MineTile'
 
 const MineRow = (props) => {
   const renderTiles = () => {
     return props.row.map((tile, index) => {
-      const bomb = tile.bomb ? 'b' : 'n'
       return (
-        <TouchableHighlight key={index} style={styles.tileContainer} >
-          <Text style={styles.tile} >
-            {bomb}
-          </Text>
-        </TouchableHighlight>
+        <MineTile key={index} tile={tile} markType={props.markType} click={props.click} />
       )
     })
   }
@@ -25,7 +21,8 @@ const MineRow = (props) => {
 
 MineRow.propTypes = {
   row: PropTypes.array.isRequired,
-  markType: PropTypes.string.isRequired
+  markType: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -35,17 +32,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'nowrap',
-  },
-  tileContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 0.5,
-    borderColor: 'gray',
-    height: '100%'
-  },
-  tile: {
-    textAlign: 'center',
   }
 })
 

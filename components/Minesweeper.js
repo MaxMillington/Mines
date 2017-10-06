@@ -12,11 +12,10 @@ class Minesweeper extends React.Component {
     }
   }
 
-
   renderRows = () => {
     const chunkedTiles = chunk(this.props.tiles, 5)
     return chunkedTiles.map((chunk, index) => {
-      return <MineRow key={index} row={chunk} markType={this.state.markType} />
+      return <MineRow key={index} row={chunk} markType={this.state.markType} click={this.props.click} />
     })
   }
 
@@ -25,14 +24,13 @@ class Minesweeper extends React.Component {
   }
 
   restartGame = () => {
-
+    console.log('restart')
   }
 
   render() {
-    console.log('this', this.state)
     return (
       <View style={styles.outerContainer}>
-        <Button style={styles.restartButton} title="Restart" onPress={this.restartGame} />
+        <Image style={styles.restartButton} source={require('../img/freeSmileF.png')}  onPress={this.restartGame} />
         <View style={styles.rowContainer} >
           {this.renderRows()}
         </View>
@@ -46,7 +44,9 @@ class Minesweeper extends React.Component {
 }
 
 Minesweeper.propTypes = {
-  tiles: PropTypes.array.isRequired
+  tiles: PropTypes.array.isRequired,
+  status: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -58,10 +58,12 @@ const styles = StyleSheet.create({
     maxHeight: 400,
     borderWidth: 0.5,
     borderColor: 'green',
+    paddingTop: 10
   },
   restartButton: {
     flex: 1,
-    paddingBottom: 50,
+    width: 50,
+    maxHeight: 50,
   },
   rowContainer: {
     flex: 2,
@@ -70,7 +72,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     borderWidth: 0.5,
-    marginVertical: 30,
+    marginBottom: 30,
+    marginTop: 20,
+    paddingHorizontal: 5,
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
     borderColor: 'gray',

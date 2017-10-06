@@ -2,9 +2,10 @@ import axios from 'axios'
 
 export const CLICK = 'CLICK'
 
-export const click = (bool) => {
+export const click = (markType, tile) => {
   return {
     type: CLICK,
-    isLoading: bool
+    markType: markType,
+    tile: tile
   }
 }
