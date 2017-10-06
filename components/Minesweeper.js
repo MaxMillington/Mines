@@ -13,15 +13,19 @@ const Minesweeper = (props) => {
     })
   }
 
+  const callCon = () => {
+    console.log('party')
+  }
+
   return (
     <View style={styles.outerContainer}>
-      <Button style={styles.restartButton} title="Restart" />
+      <Button style={styles.restartButton} title="Restart" onPress={callCon} />
       <View style={styles.rowContainer} >
         {renderRows()}
       </View>
       <View style={styles.buttonContainer} >
-        <Button title="mark bomb"/>
-        <Button title="mark space"/>
+        <Button title="mark bomb" onPress={callCon}/>
+        <Button title="mark space" onPress={callCon}/>
       </View>
     </View>
   )
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   rowContainer: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -54,8 +58,10 @@ const styles = StyleSheet.create({
     // maxWidth: 300,
     // maxHeight: 250,
     borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    marginTop: 30,
+    marginVertical: 30,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
+    borderColor: 'gray',
   },
   buttonContainer: {
     flex: 1,

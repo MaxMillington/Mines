@@ -6,9 +6,9 @@ let tiles = []
 
 let i
 
-for (i = 1; i <= 7; i++) {
+for (i = 1; i <= 5; i++) {
   let j
-  for (j = 1; j <= 1; j++) {
+  for (j = 1; j <= 5; j++) {
     const bomb = Math.random() < 0.3
     tiles.push({ coordinates: [i, j], bomb: bomb, clicked: false })
   }

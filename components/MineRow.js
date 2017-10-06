@@ -9,7 +9,7 @@ const MineRow = (props) => {
       return (
         <View key={index} style={styles.tileContainer} >
           <Text style={styles.tile} >
-            b
+            {bomb}
           </Text>
         </View>
       )
@@ -33,18 +33,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'blue',
-    flexWrap: 'nowrap'
+    flexWrap: 'nowrap',
   },
   tileContainer: {
     flex: 1,
-    // flexGrow: 1,
-    // flexBasis: 0.14,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 0.5,
-    borderColor: 'red',
+    borderColor: 'gray',
     height: '100%'
   },
   tile: {
@@ -52,7 +48,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     textAlign: 'center',
-    // flexGrow: 1,
+    // height: '100%'
   }
 })
 
