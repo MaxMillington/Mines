@@ -24,7 +24,7 @@ class Minesweeper extends React.Component {
   }
 
   restartGame = () => {
-    console.log('restart')
+    this.props.restart()
   }
 
   render() {
@@ -39,7 +39,9 @@ class Minesweeper extends React.Component {
 
     return (
       <View style={styles.outerContainer}>
-        <Image style={styles.restartButton} source={source}  onPress={this.restartGame} />
+        <TouchableHighlight onPress={this.restartGame} >
+          <Image style={styles.restartButton} source={source} />
+        </TouchableHighlight>
         <View style={styles.rowContainer} >
           {this.renderRows()}
         </View>
@@ -55,7 +57,8 @@ class Minesweeper extends React.Component {
 Minesweeper.propTypes = {
   tiles: PropTypes.array.isRequired,
   status: PropTypes.string.isRequired,
-  click: PropTypes.func.isRequired
+  click: PropTypes.func.isRequired,
+  restart: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

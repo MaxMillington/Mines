@@ -14,7 +14,7 @@ const MineTile = (props) => {
     props.click(props.markType, props.tile)
   }
 
-  console.log('yo my props', props)
+  // console.log('yo my props', props)
 
   return (
     <TouchableHighlight

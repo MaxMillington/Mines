@@ -2,7 +2,7 @@ import React from 'react' // eslint-disable-line
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Minesweeper from '../components/Minesweeper'
-import { click } from '../actions/index'
+import { click, restart } from '../actions/index'
 
 const mapStateToProps = (state) => ({
   tiles: state.mine.tiles,
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   click,
+  restart
 }, dispatch)
 
 
